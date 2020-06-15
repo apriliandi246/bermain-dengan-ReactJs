@@ -1,11 +1,45 @@
 import React, { Component } from 'react';
+import Form from './components/form';
+import Task from './components/task';
+import './css/App.css';
+
 
 class App extends Component {
-  state = {}
+  constructor() {
+    super();
+    this.newTask = React.createRef();
+  }
+
+  state = {
+    tasks: []
+  }
+
   render() {
     return (
-      <h1>Hello</h1>
+      <div className="container">
+        <Form
+          addTask={this.addNewTask}
+          inputRef={this.newTask}
+        />
+
+        <Task
+          onDelete={this.deleteTask}
+          tasks={this.state.tasks}
+        />
+      </div>
     );
+  }
+
+  addNewTask = (event) => {
+    event.preventDefault();
+    const tasks = [...this.state.tasks];
+    tasks.push({ id: Math.random(), value: this.newTask.current.value.trimStart().trimEnd() });
+    this.setState({ tasks });
+  }
+
+  deleteTask = (taskId) => {
+    const tasks = this.state.tasks.filter(t => t.id !== taskId);
+    this.setState({ tasks });
   }
 }
 
