@@ -32,8 +32,15 @@ class App extends Component {
 
   addNewTask = (event) => {
     event.preventDefault();
+
+    const inputValue = this.newTask.current.value;
+
+    if (!inputValue) {
+      return;
+    }
+
     const tasks = [...this.state.tasks];
-    tasks.push({ id: Math.random(), value: this.newTask.current.value.trimStart().trimEnd() });
+    tasks.push({ id: Math.random(), value: inputValue.trimStart().trimEnd() });
     this.setState({ tasks });
   }
 
