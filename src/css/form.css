@@ -3,10 +3,20 @@
 }
 
 input {
-   padding: 5px;
+   width: 603px;
+   padding: 15px;
+   font-size: 18px;
+   font-family: monospace;
+}
+
+input::placeholder {
+   font-family: monospace;
 }
 
 button {
-   padding: 5px;
-   margin-left: 10px;
+   padding: 15px;
+   font-size: 18px;
+   margin-left: 33px;
+   box-sizing: border-box;
+   font-family: monospace;
 }

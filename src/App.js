@@ -36,6 +36,12 @@ class App extends Component {
     const inputValue = this.newTask.current.value;
 
     if (!inputValue) {
+      alert("type something...");
+      return;
+    }
+
+    if (inputValue.length > 500) {
+      alert("must be less than 500 characters...");
       return;
     }
 
