@@ -6,28 +6,38 @@ import './css/App.css';
 
 class App extends Component {
   constructor() {
-    super();
-    this.newTask = React.createRef();
+    super()
+    this.newTask = React.createRef()
   }
 
   state = {
-    tasks: []
+    tasks: [],
+    text: ''
   }
 
   render() {
+    const { tasks, text } = this.state;
+
     return (
       <div className="container">
         <Form
+          onInputChange={this.handleChange}
           addTask={this.addNewTask}
           inputRef={this.newTask}
+          tasks={tasks}
+          text={text}
         />
 
         <Task
           onDelete={this.deleteTask}
-          tasks={this.state.tasks}
+          tasks={tasks}
         />
       </div>
     );
+  }
+
+  handleChange = (e) => {
+    this.setState({ text: e.target.value });
   }
 
   addNewTask = (event) => {
@@ -46,8 +56,10 @@ class App extends Component {
     }
 
     const tasks = [...this.state.tasks];
-    tasks.push({ id: Math.random(), value: inputValue.trimStart().trimEnd() });
+    tasks.push({ id: Date.now(), value: inputValue.trimStart().trimEnd() });
+
     this.setState({ tasks });
+    this.setState({ text: '' });
   }
 
   deleteTask = (taskId) => {
@@ -55,5 +67,6 @@ class App extends Component {
     this.setState({ tasks });
   }
 }
+
 
 export default App;
