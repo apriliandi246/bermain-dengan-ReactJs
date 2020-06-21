@@ -5,11 +5,6 @@ import './css/App.css';
 
 
 class App extends Component {
-  constructor() {
-    super()
-    this.newTask = React.createRef()
-  }
-
   state = {
     tasks: [],
     text: ''
@@ -23,7 +18,6 @@ class App extends Component {
         <Form
           onInputChange={this.handleChange}
           addTask={this.addNewTask}
-          inputRef={this.newTask}
           tasks={tasks}
           text={text}
         />
@@ -41,24 +35,24 @@ class App extends Component {
   }
 
   addNewTask = (event) => {
+    const { tasks, text } = this.state;
+
     event.preventDefault();
 
-    const inputValue = this.newTask.current.value;
-
-    if (!inputValue) {
+    if (text === '') {
       alert("type something...");
       return;
     }
 
-    if (inputValue.length > 500) {
+    if (text.length > 500) {
       alert("must be less than 500 characters...");
       return;
     }
 
-    const tasks = [...this.state.tasks];
-    tasks.push({ id: Date.now(), value: inputValue.trimStart().trimEnd() });
+    const newTasks = [...tasks];
+    newTasks.push({ id: Date.now(), value: text.trimStart().trimEnd() });
 
-    this.setState({ tasks });
+    this.setState({ tasks: newTasks });
     this.setState({ text: '' });
   }
 

@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-import '../css/task.css';
 
 
 class Task extends Component {
   render() {
-    const data = this.props.tasks;
+    const tasks = this.props.tasks;
 
     return (
       <div className="task-container">
         {
-          data.map(t =>
-            <div className="task" key={t.id}>
-              <span>{t.value}</span>
-              <button onClick={() => this.props.onDelete(t.id)}>delete</button>
+          tasks.map(task =>
+            <div className="task" key={task.id}>
+              <div className="description">{task.value}</div>
+              <button onClick={() => this.props.onDelete(task.id)}>delete</button>
             </div>
           )
         }

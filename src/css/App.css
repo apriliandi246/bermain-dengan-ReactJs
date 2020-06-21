@@ -1,4 +1,75 @@
+body {
+   background: rgb(204, 196, 196);
+}
+
+
 .container {
-   width: 820px;
-   margin: 50px auto;
+   width: 920px;
+   margin: 70px auto;
+}
+
+
+/* form */
+.form-container {
+   margin-bottom: 20px;
+}
+
+input {
+   border: none;
+   width: 760px;
+   padding: 15px;
+   font-size: 18px;
+   border-radius: 5px;
+   font-family: monospace;
+}
+
+input::placeholder {
+   font-family: monospace;
+}
+
+input:focus {
+   outline: none;
+}
+
+button {
+   border: none;
+   padding: 14px;
+   font-size: 18px;
+   margin-left: 33px;
+   border-radius: 5px;
+   box-sizing: border-box;
+   font-family: monospace;
+   background-color: rgb(223, 233, 233);
+}
+
+button:hover {
+   cursor: pointer;
+}
+
+button:focus {
+   outline: none;
+}
+
+
+/* task */
+.task-container {
+   margin-top: 36px;
+}
+
+div.description {
+   width: 580px;
+   overflow: auto;
+   font-size: 18px;
+   margin-right: 18px;
+}
+
+div.task {
+   padding: 23px;
+   margin-top: 40px;
+   margin-left: -25px;
+   border-radius: 10px;
+   font-family: monospace;
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
 }
