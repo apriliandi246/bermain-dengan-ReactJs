@@ -9,6 +9,18 @@ body {
 }
 
 
+/* head */
+.head {
+   text-align: center;
+}
+
+.head img {
+   width: 120px;
+   height: 110px;
+   margin-bottom: 20px;
+}
+
+
 /* form */
 .form-container {
    margin-bottom: 20px;

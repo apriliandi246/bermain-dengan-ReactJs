@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import Form from './components/form';
-import Task from './components/task';
-import './css/App.css';
+import Form from './components/Form';
+import Task from './components/Task';
+import Head from './components/Head';
+import './css/style.css';
 
 
 class App extends Component {
@@ -15,6 +16,8 @@ class App extends Component {
 
     return (
       <div className="container">
+        <Head />
+
         <Form
           onInputChange={this.handleChange}
           addTask={this.addNewTask}
