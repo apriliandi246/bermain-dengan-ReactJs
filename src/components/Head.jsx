@@ -1,15 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import TodoImage from '../assets/images/todo.jpg';
 
 
-class Head extends Component {
-   render() {
-      return (
-         <div className="head">
-            <img src={TodoImage} alt="todo" />
-         </div>
-      );
-   }
+const Head = () => {
+   return (
+      <div className="head">
+         <img src={TodoImage} alt="todo" />
+      </div>
+   );
 }
 
 

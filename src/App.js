@@ -1,45 +1,19 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Form from './components/Form';
 import Task from './components/Task';
 import Head from './components/Head';
 import './css/style.css';
 
 
-class App extends Component {
-  state = {
-    tasks: [],
-    text: ''
+const App = () => {
+  const [tasks, setTasks] = useState([]);
+  const [text, setText] = useState('');
+
+  const handleChange = (e) => {
+    setText(e.target.value);
   }
 
-  render() {
-    const { tasks, text } = this.state;
-
-    return (
-      <div className="container">
-        <Head />
-
-        <Form
-          onInputChange={this.handleChange}
-          addTask={this.addNewTask}
-          tasks={tasks}
-          text={text}
-        />
-
-        <Task
-          onDelete={this.deleteTask}
-          tasks={tasks}
-        />
-      </div>
-    );
-  }
-
-  handleChange = (e) => {
-    this.setState({ text: e.target.value });
-  }
-
-  addNewTask = (event) => {
-    const { tasks, text } = this.state;
-
+  const addNewTask = (event) => {
     event.preventDefault();
 
     if (text === '') {
@@ -55,14 +29,32 @@ class App extends Component {
     const newTasks = [...tasks];
     newTasks.push({ id: Date.now(), value: text.trimStart().trimEnd() });
 
-    this.setState({ tasks: newTasks });
-    this.setState({ text: '' });
+    setText('');
+    setTasks(newTasks);
   }
 
-  deleteTask = (taskId) => {
-    const tasks = this.state.tasks.filter(t => t.id !== taskId);
-    this.setState({ tasks });
+  const deleteTask = (taskId) => {
+    const restOfTask = tasks.filter(t => t.id !== taskId);
+    setTasks(restOfTask);
   }
+
+  return (
+    <div className="container">
+      <Head />
+
+      <Form
+        text={text}
+        tasks={tasks}
+        addTask={addNewTask}
+        onInputChange={handleChange}
+      />
+
+      <Task
+        tasks={tasks}
+        onDelete={deleteTask}
+      />
+    </div>
+  );
 }
 
 
