@@ -23,12 +23,13 @@ body {
 
 /* form */
 .form-container {
+   text-align: center;
    margin-bottom: 20px;
 }
 
 input {
    border: none;
-   width: 760px;
+   width: 660px;
    padding: 15px;
    font-size: 18px;
    border-radius: 5px;
