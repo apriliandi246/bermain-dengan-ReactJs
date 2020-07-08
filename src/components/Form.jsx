@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 class Form extends Component {
   render() {
     const { addTask, tasks, text, onInputChange } = this.props;
@@ -15,6 +14,5 @@ class Form extends Component {
     );
   }
 }
-
 
 export default Form;

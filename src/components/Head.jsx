@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import TodoImage from '../assets/images/todo.jpg';
 
-
 class Head extends Component {
    render() {
       return (
@@ -11,6 +10,5 @@ class Head extends Component {
       );
    }
 }
-
 
 export default Head;

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 class Task extends Component {
   render() {
     const tasks = this.props.tasks;
@@ -19,6 +18,5 @@ class Task extends Component {
     );
   }
 }
-
 
 export default Task;

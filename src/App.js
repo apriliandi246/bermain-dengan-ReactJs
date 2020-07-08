@@ -4,11 +4,10 @@ import Task from './components/Task';
 import Head from './components/Head';
 import './css/style.css';
 
-
 class App extends Component {
   state = {
-    tasks: [],
-    text: ''
+    text: '',
+    tasks: []
   }
 
   render() {
@@ -19,15 +18,15 @@ class App extends Component {
         <Head />
 
         <Form
-          onInputChange={this.handleChange}
-          addTask={this.addNewTask}
-          tasks={tasks}
           text={text}
+          tasks={tasks}
+          addTask={this.addNewTask}
+          onInputChange={this.handleChange}
         />
 
         <Task
-          onDelete={this.deleteTask}
           tasks={tasks}
+          onDelete={this.deleteTask}
         />
       </div>
     );
@@ -42,7 +41,7 @@ class App extends Component {
 
     event.preventDefault();
 
-    if (text === '') {
+    if (!text) {
       alert("type something...");
       return;
     }
@@ -60,7 +59,7 @@ class App extends Component {
   }
 
   deleteTask = (taskId) => {
-    const tasks = this.state.tasks.filter(t => t.id !== taskId);
+    const tasks = this.state.tasks.filter((task) => task.id !== taskId);
     this.setState({ tasks });
   }
 }
