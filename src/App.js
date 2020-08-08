@@ -10,6 +10,37 @@ class App extends Component {
     tasks: []
   }
 
+  handleChange = (event) => {
+    this.setState({ text: event.target.value });
+  }
+
+  addNewTask = (event) => {
+    event.preventDefault();
+
+    const { tasks, text } = this.state;
+
+    if (!text.trim()) {
+      alert("type something...");
+      return;
+    }
+
+    if (text.length > 500) {
+      alert("must be less than 500 characters...");
+      return;
+    }
+
+    const newTasks = [...tasks];
+    newTasks.push({ id: Date.now(), value: text.trim() });
+
+    this.setState({ tasks: newTasks });
+    this.setState({ text: '' });
+  }
+
+  deleteTask = (taskId) => {
+    const tasks = this.state.tasks.filter((task) => task.id !== taskId);
+    this.setState({ tasks });
+  }
+
   render() {
     const { tasks, text } = this.state;
 
@@ -31,38 +62,6 @@ class App extends Component {
       </div>
     );
   }
-
-  handleChange = (e) => {
-    this.setState({ text: e.target.value });
-  }
-
-  addNewTask = (event) => {
-    const { tasks, text } = this.state;
-
-    event.preventDefault();
-
-    if (!text) {
-      alert("type something...");
-      return;
-    }
-
-    if (text.length > 500) {
-      alert("must be less than 500 characters...");
-      return;
-    }
-
-    const newTasks = [...tasks];
-    newTasks.push({ id: Date.now(), value: text.trimStart().trimEnd() });
-
-    this.setState({ tasks: newTasks });
-    this.setState({ text: '' });
-  }
-
-  deleteTask = (taskId) => {
-    const tasks = this.state.tasks.filter((task) => task.id !== taskId);
-    this.setState({ tasks });
-  }
 }
-
 
 export default App;
